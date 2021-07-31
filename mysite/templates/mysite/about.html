@@ -1,0 +1,20 @@
+{% extends 'basic.html' %}
+{% block title %}About{% endblock title %}
+{% block aboutact %} active {% endblock aboutact %}
+{% block body %}
+
+<div class="container my-5">
+    {% if user.is_authenticated %}
+    <h5>Welcome {{user.username}}</h5>
+    <hr>
+    <h6>First Name : {{user.first_name}}</h6>
+     <h6>Last Name : {{user.last_name}}</h6>
+      <h6>Email : {{user.email}}</h6>
+       <h6>Super User : {{user.is_superuser}}</h6>
+        <h6>Last Login : {{user.last_login}}</h6>
+   
+    {% else %}
+    <h5>Please Login To Check Details</h5>
+    {% endif %}
+</div>
+{% endblock body %}

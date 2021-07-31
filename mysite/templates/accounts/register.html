@@ -1,0 +1,63 @@
+{% extends 'basic.html' %}
+{% block title %}Register Here{% endblock title %}
+{% block css %}
+.form-control {
+    background-color: #e6ffee;
+    border: 2px solid #198754;
+}
+.form-control:focus {
+    background-color: #e6ffee;
+    border: 2px solid #198754;
+
+}
+.form-label, div.row:last-of-type>div>button  {
+    font-weight: bold;
+}
+
+{% endblock css %}
+{% block registeract %}active{% endblock registeract %}
+{% block body %}
+<div class="container my-5">
+    <h4>Register User</h4>
+    <form action="{% url 'register' %}" method="post"> {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Enter Username</label>
+                    <input type="text" class="form-control" id="username" name="username" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="pass1" class="form-label">Enter Password</label>
+                    <input type="password" class="form-control" id="pass1" name="pass1" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" autocomplete="off">
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="pass2" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="pass2" name="pass2" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name="lname" autocomplete="off">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-outline-success">Register</button>
+                </div>
+            </div>
+    </form>
+</div>
+{% endblock body %}

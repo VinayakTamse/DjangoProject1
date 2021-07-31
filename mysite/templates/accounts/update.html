@@ -1,0 +1,16 @@
+{% extends 'basic.html' %}
+{% block title %}update{% endblock title %}
+{% block body %}
+<div class="container my-5">
+    <h7>Update Your Data</h7>
+    <div class="mt-5">
+        <form action="" method="post"> {% csrf_token %}
+            {{forms.as_p}}
+            <input type="submit" class="btn btn-info" value="Update">
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock body %}

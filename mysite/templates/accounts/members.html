@@ -1,0 +1,53 @@
+{% extends 'basic.html' %}
+{% block title %}members{% endblock title%}
+{% block memberact %}active{% endblock memberact %}
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <form action="" method="post">{% csrf_token %}
+                {{forms.as_p}}
+                <button type="submit" class="btn btn-success btn-sm">Add Member</button>
+            </form>
+
+        </div>
+        <div class="col-lg-8">
+            {% if Member %}
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mem in Member %}
+                    <tr>
+                        <td>{{mem.member_name}}</td>
+                        <td>{{mem.member_email}}</td>
+                        <td>{{mem.member_contact}}</td>
+                        <td>
+                            <form action="{% url 'delete_members' mem.memeber_id %}" method="post">{% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+    
+                            <a href="{% url 'update_members' mem.memeber_id %}"type="button" class="btn btn-info btn-sm">Update</a>
+                            
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h6>No Members Added</h6>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock body %}
