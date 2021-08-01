@@ -60,12 +60,16 @@
               <li class="nav-item">
                 <a class="nav-link {% block memberact %}{% endblock memberact %}" href="{% url 'members' %}">Members</a>
               </li>
+    
               {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="/">Welcome {{user.first_name}}</a>
               </li>
                <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block usermemberact %}{% endblock usermemberact %}" href="{% url 'user_members' user.id %}">UserMembers</a>
               </li>
 
               {% else %}

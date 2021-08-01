@@ -22,4 +22,5 @@ urlpatterns = [
     path('',views.Home, name='Home'),
     path('about/', views.About, name="About"),
     path('accounts/', include('accounts.urls')),
+    
 ]

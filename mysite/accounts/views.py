@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from accounts.forms import RegisterMember
-from accounts.models import Member
+from accounts.models import Member, UserMembers
 
 # Create your views here.
 
@@ -35,6 +35,7 @@ def LoginHandle(request):
         if myuser is not None:
             login(request, myuser)
             messages.success(request, 'Welcome '+ myuser.first_name)
+            
             return redirect('/')
         else:
             messages.error(request, 'Invalid Credentials')
@@ -87,4 +88,21 @@ def update_members(request, id):
     up = Member.objects.get(pk=id)
     reg = RegisterMember(instance=up)
     return render(request, 'accounts/update.html', {'forms':reg})
+
+def user_member(request, id):
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email1')
+        gender = request.POST.get('gender')
+        desc = request.POST.get('text_desc')
+        us = User.objects.get(pk=id)
+        um = UserMembers(user_id=us, user_name=name, user_email=email, user_gender=gender, user_desc=desc)
+        um.save()
+        return redirect('/')
+    us = User.objects.get(pk=id)
+    user_mem = UserMembers.objects.filter(user_id=us.id)
+    return render(request, 'accounts/usermembers.html',{'userdata':user_mem})
+
+
 
