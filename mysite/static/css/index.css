@@ -1,0 +1,55 @@
+.apfsk     {
+            border: 5px solid transparent;
+
+        }
+
+div.apfsk>img {
+    height: 850px;
+    width: 100%;
+  }
+
+.regBtn, .loginBtn{
+
+background: none;
+border: none;
+
+}
+.regBtn:hover {
+
+background: none;
+border: none;
+
+}
+
+div.img_res img {
+
+width: 250px;
+height: 200px;
+
+}
+
+.succH {
+    border-bottom: 2px solid green;
+}
+
+.succF {
+    border-top: 2px solid green;
+}
+
+.errH {
+    border-bottom: 2px solid red;
+}
+
+.errF {
+    border-top: 2px solid red;
+}
+
+.displayPages {
+
+    margin-top: 100px;
+
+}
+.displayPages .page-link {
+    background-color: #17a2b8 !important;
+    color: black;
+}

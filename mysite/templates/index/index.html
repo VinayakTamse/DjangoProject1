@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}index | Home{% endblock title %}
+{% block homeactive  %} active {% endblock %}
+{% block body %}
+{% load static %}
+<div class="apfsk my-3">
+<img src="{% static 'images/ganeshaPic3.jpg' %}" alt="image_gamesha" class="img-thumbnail"/>
+</div>
+<div class="container">
+    <h3 class="text-center mt-3">Our Images Here</h3>
+
+    <h4 class="text-center">Check out our Gallery to View Images</h4>
+
+    <h4>{{ gan.0.catagory }}</h4>
+    {% for i in gan|slice:"2" %}
+    <img src="/media/{{ i.img }}" width="300px" height="200px" class="mb-3">
+    {% endfor %}
+    <h4>{{ han.0.catagory }}</h4>
+    {% for ih in han|slice:"2" %}
+    <img src="/media/{{ ih.img }}" width="300px" height="200px" class="mb-3">
+    {% endfor %}
+</div>
+{% endblock body %}
